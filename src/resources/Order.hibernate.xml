@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.lanou.domain.Order">
+    <class name="com.lanou.domain.Order" table="Orders">
         <id name="id">
             <generator class="native"/>
         </id>
@@ -15,5 +15,16 @@
 
         <!-- 价格 -->
         <property name="startDate"/>
+
+        <!-- 单项 n-1 在 n 的一方定义 1 ,即 n 能找到 1 ,
+            但是 1 找不到 n;
+            此处n指的是Order订单, 1指的是Customer用户;
+            即能找到该订单所属的用户,但是找不到用户下所属的订单;
+            many-to-one : 多对一关系标签
+                name : n 方中 1 的属性名称
+                class : n方中1的全路径
+                column : 在n的对应数据表中1的列名,即外键名
+                not-null : 该属性不能为空-->
+        <many-to-one name="customer" class="com.lanou.domain.Customer" column="customer_id"/>
     </class>
 </hibernate-mapping>

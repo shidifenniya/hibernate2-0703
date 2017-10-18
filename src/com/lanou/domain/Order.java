@@ -16,6 +16,8 @@ public class Order {
 
     private Date startDate;
 
+    private Customer customer;
+
     public Order() {
     }
 
@@ -30,6 +32,14 @@ public class Order {
         this.orderNumber = orderNumber;
         this.price = price;
         this.startDate = startDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public int getId() {
