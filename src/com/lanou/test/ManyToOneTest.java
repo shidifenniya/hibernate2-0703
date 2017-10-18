@@ -65,4 +65,55 @@ public class ManyToOneTest {
 
     }
 
+    /**
+     *  双向 1-n 中的插入
+     */
+    @Test
+    public void doubleInsert(){
+
+        // 创建用户对象和订单对象
+        Customer customer = new Customer("奈亚子","naiyazi","123","♀");
+
+        Order order = new Order("L003",19800,new Date());
+
+        //绑定订单所属的用户
+        order.setCustomer(customer);
+
+        Session session = HibernateUtil.getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        //保存用户与订单对象
+        session.save(customer);
+
+        session.save(order);
+
+        transaction.commit();
+
+        HibernateUtil.closeSession();
+
+    }
+
+    /**
+     * 双向 1-n 查询
+     */
+    @Test
+    public void doubleFind(){
+
+        Session session = HibernateUtil.getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        Customer customer = session.get(Customer.class, 4);
+
+        System.out.println("基础属性:" + customer);
+
+        System.out.println("用户名下的订单集合:" + customer.getOrders());
+
+        transaction.commit();
+
+        HibernateUtil.closeSession();
+
+    }
+
 }

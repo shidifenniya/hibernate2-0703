@@ -1,5 +1,8 @@
 package com.lanou.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by dllo on 17/10/18.
  */
@@ -14,6 +17,9 @@ public class Customer  {
     private String password;//密码
 
     private String gender;//用户性别
+
+    //定义该用户名下的订单集合
+    private Set<Order> orders = new HashSet<>();
 
     public Customer() {
     }
@@ -82,5 +88,13 @@ public class Customer  {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }

@@ -15,6 +15,22 @@
         <property name="password"/>
         <!-- 性别 -->
         <property name="gender"/>
+
+        <!-- 双向 1-n, 在 n (订单) 能找到对应的 1 (用户)
+             也能在 1 (用户) 找到对应的 n 的集合 (订单集合)
+             在 n 的一方定义 many-to-one, 在 1 的一方定义set
+             set : 在 1 的一方中对应 n 的属性集合的名称
+                name : 在1的一方对应n的属性集合名称
+                table : n 的一方对应的数据库表名, 参见 n 的映射文件中的table属性配置
+                inverse : 配置1 与 n 的维护关系有谁控制, false : 主动方;
+                          true:被动方;
+                          通常在 n 的一方配置为 false, 即主动维护二者关系
+             key : 1与n关联的外键名称, 参见n的一方中 many-to-one 中定义的column
+             one-to-many : 在1的一方定义n的类路径 -->
+        <set name="orders" table="Orders">
+            <key column="customer_id"/>
+            <one-to-many class="com.lanou.domain.Order"/>
+        </set>
     </class>
 
 </hibernate-mapping>
