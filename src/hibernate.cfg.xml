@@ -18,5 +18,9 @@
     <!-- 加载映射文件 -->
     <mapping resource="resources/Order.hibernate.xml"/>
     <mapping resource="resources/Customer.hibernate.xml"/>
+
+    <mapping resource="resources/Person.hbm.xml"/>
+    <mapping resource="resources/IDCard.hbm.xml"/>
+
   </session-factory>
 </hibernate-configuration>
