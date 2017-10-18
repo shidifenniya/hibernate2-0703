@@ -8,7 +8,15 @@
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.username">root</property>
     <property name="connection.password">123456</property>
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
+
+    <!-- 可选配置 -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+    <!-- 加载映射文件 -->
+    <mapping resource="resources/Order.hibernate.xml"/>
+    <mapping resource="resources/Customer.hibernate.xml"/>
   </session-factory>
 </hibernate-configuration>
