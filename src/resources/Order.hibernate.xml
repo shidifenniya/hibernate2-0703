@@ -25,6 +25,10 @@
                 class : n方中1的全路径
                 column : 在n的对应数据表中1的列名,即外键名
                 not-null : 该属性不能为空-->
-        <many-to-one name="customer" class="com.lanou.domain.Customer" column="customer_id"/>
+        <many-to-one name="customer"
+                     class="com.lanou.domain.Customer"
+                     not-null="true"
+                     cascade="all"
+                     column="customer_id"/>
     </class>
 </hibernate-mapping>
