@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lanou.domain.Manager">
+        <id name="id">
+            <!-- 自己不生成主键id ,而是通过其他表中的主键省的本表的主键 -->
+            <generator class="foreign">
+                <!-- 生成逐渐的表属性 -->
+                <param name="property">department</param>
+            </generator>
+        </id>
+        <property name="name"/>
+        <!-- 基于主键的1对1关系
+            与基于外键的1对1关系在 one-to-one标签配置时constrained和property-ref的配置
+             1.基于外键的配置property-ref属性指向外键
+             2.基于主键的配置constrained属性建立约束条件-->
+        <one-to-one name="department"
+                    class="com.lanou.domain.Manager"
+                    cascade="all"
+                    constrained="true"/>
+    </class>
+</hibernate-mapping>
